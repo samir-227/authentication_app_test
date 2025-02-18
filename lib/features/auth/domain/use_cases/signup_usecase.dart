@@ -3,11 +3,10 @@ import 'package:authentication_app_test/features/auth/domain/repos/auth_repo.dar
 import 'package:authentication_app_test/features/auth/domain/repos/entities/user_model.dart';
 import 'package:dartz/dartz.dart';
 
-class LoginUseCase {
-  final AuthRepo authRepo;
-  LoginUseCase(this.authRepo);
-  // name
-  Future<Either<Failure,String>> execute(UserModel user) {
-    return authRepo.logIn(user);
+class SignUpUseCase {
+  final IAuthRepo authApp;
+  SignUpUseCase(this.authApp);
+  Future<Either<Failure, String>> execute(UserModel user) {
+    return authApp.signUp(user);
   }
 }

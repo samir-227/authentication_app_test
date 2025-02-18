@@ -1,13 +1,10 @@
 import 'package:authentication_app_test/features/auth/domain/repos/entities/user_model.dart';
-import 'package:authentication_app_test/features/auth/domain/usecases/login_usecase.dart';
-import 'package:authentication_app_test/features/auth/domain/usecases/logout_usecase.dart';
-import 'package:authentication_app_test/features/auth/domain/usecases/signup_usecase.dart';
-import 'package:authentication_app_test/features/auth/presentation/cubits/auth_cubit/auth_cubit.dart';
+import 'package:authentication_app_test/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginViewBody extends StatefulWidget {
-const LoginViewBody({super.key}); // Add constructor
+  const LoginViewBody({super.key}); // Add constructor
 
   @override
   State<LoginViewBody> createState() => _LoginViewBodyState();
