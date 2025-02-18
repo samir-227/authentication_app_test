@@ -3,8 +3,8 @@ import 'package:authentication_app_test/core/errors/failure.dart';
 import 'package:authentication_app_test/features/auth/domain/repos/entities/user_model.dart';
 import 'package:dartz/dartz.dart';
 
-abstract class AuthRepo {
-  Future <Either<Failure,String>> logIn(UserModel user);
-  Future <Either<Failure,String>> signUp(UserModel user);
-  Future<Either<Failure,void>> logOut();
+abstract class IAuthRepo {
+  Future<Either<Failure, String>> logIn(UserModel user);
+  Future<Either<Failure, String>> signUp(UserModel user);
+  Future<Either<Failure, void>> logOut();
 }

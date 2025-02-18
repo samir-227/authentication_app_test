@@ -3,9 +3,9 @@ import 'package:authentication_app_test/features/auth/domain/repos/auth_repo.dar
 import 'package:dartz/dartz.dart';
 
 class LogoutUseCase {
-  final AuthRepo authRepo;
+  final IAuthRepo authRepo;
   LogoutUseCase(this.authRepo);
-  Future<Either<Failure,void>> execute(){
+  Future<Either<Failure, void>> execute() {
     return authRepo.logOut();
   }
 }

@@ -1,7 +1,7 @@
 import 'package:authentication_app_test/features/auth/domain/repos/entities/user_model.dart';
-import 'package:authentication_app_test/features/auth/domain/usecases/login_usecase.dart';
-import 'package:authentication_app_test/features/auth/domain/usecases/logout_usecase.dart';
-import 'package:authentication_app_test/features/auth/domain/usecases/signup_usecase.dart';
+import 'package:authentication_app_test/features/auth/domain/use_cases/login_usecase.dart';
+import 'package:authentication_app_test/features/auth/domain/use_cases/logout_usecase.dart';
+import 'package:authentication_app_test/features/auth/domain/use_cases/signup_usecase.dart';
 import 'package:bloc/bloc.dart';
 
 
