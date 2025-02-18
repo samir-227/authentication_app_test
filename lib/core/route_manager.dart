@@ -14,7 +14,7 @@ abstract class RouterManager {
         path: LoginPage.routeName,
         name: LoginPage.routeName,
         builder: (context, state) {
-          AuthService().init();
+          AuthService().initDi();
           return RepositoryProvider(
             create: (context) => GetIt.instance<AuthRepoImpl>(),
             child: BlocProvider(

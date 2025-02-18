@@ -12,14 +12,12 @@ import 'package:get_it/get_it.dart';
 class AuthService {
   final sl = GetIt.instance;
 
-  void init() {
+  void initDi() {
     sl.registerLazySingletonSafely<IConnection>(
       () => ApiService(),
     );
     sl.registerLazySingletonSafely<IAuthRepo>(
-      () => AuthRepoImpl(
-        apiService: sl(),
-      ),
+      () => AuthRepoImpl(apiService: sl()),
     );
     sl.registerLazySingletonSafely<LoginUseCase>(
       () => LoginUseCase(sl()),
