@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 abstract class IConnection {
+  // Interface
   Future<Response> get({
     required String url,
     String? token,

@@ -4,6 +4,7 @@ import 'package:authentication_app_test/features/auth/domain/repos/entities/user
 import 'package:dartz/dartz.dart';
 
 abstract class IAuthRepo {
+  // I refer to the interface
   Future<Either<Failure, String>> logIn(UserModel user);
   Future<Either<Failure, String>> signUp(UserModel user);
   Future<Either<Failure, void>> logOut();

@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
+
 abstract class RouterManager {
   static GoRouter routerConfig = GoRouter(
     initialLocation: LoginPage.routeName,
@@ -14,7 +15,7 @@ abstract class RouterManager {
         path: LoginPage.routeName,
         name: LoginPage.routeName,
         builder: (context, state) {
-          AuthService().init();
+          AuthService().init(); // di
           return RepositoryProvider(
             create: (context) => GetIt.instance<AuthRepoImpl>(),
             child: BlocProvider(

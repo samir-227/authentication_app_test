@@ -8,6 +8,7 @@ import 'package:dartz/dartz.dart';
 // Repository Implementation
 class AuthRepoImpl implements IAuthRepo {
   final IConnection apiService;
+
   AuthRepoImpl({required this.apiService});
   @override
   Future<Either<Failure, String>> logIn(UserModel user) async {

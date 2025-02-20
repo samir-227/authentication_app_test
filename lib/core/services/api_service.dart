@@ -2,6 +2,7 @@ import 'package:authentication_app_test/core/abstractions/i_connection.dart';
 import 'package:dio/dio.dart';
 
 class ApiService implements IConnection {
+  // interface connection implementation
   Dio get dio => Dio();
   @override
   Future<Response> get({
