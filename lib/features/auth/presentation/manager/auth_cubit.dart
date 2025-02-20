@@ -4,15 +4,14 @@ import 'package:authentication_app_test/features/auth/domain/use_cases/logout_us
 import 'package:authentication_app_test/features/auth/domain/use_cases/signup_usecase.dart';
 import 'package:bloc/bloc.dart';
 
-
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit(
-     this.loginUseCase,
-     this.signUpUseCase,
-     this.logoutUseCase,
-  ) : super(AuthInitial());
+  AuthCubit({
+    required this.loginUseCase,
+    required this.signUpUseCase,
+    required this.logoutUseCase,
+  }) : super(AuthInitial());
 
   final LoginUseCase loginUseCase;
   final SignUpUseCase signUpUseCase;
@@ -43,6 +42,7 @@ class AuthCubit extends Cubit<AuthState> {
       ),
     );
   }
+
   Future<void> logOut(UserModel user) async {
     emit(AuthLoading());
     final response = await logoutUseCase.execute();
@@ -50,9 +50,7 @@ class AuthCubit extends Cubit<AuthState> {
       (failure) => emit(
         AuthError(errMessage: failure.message),
       ),
-      (_) => emit(
-      UserLogout()
-      ),
+      (_) => emit(UserLogout()),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:authentication_app_test/features/auth/data/di/auth_service.dart';
 import 'package:authentication_app_test/features/auth/data/repos/auth_repo_impl.dart';
+import 'package:authentication_app_test/features/auth/domain/repos/auth_repo.dart';
 import 'package:authentication_app_test/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:authentication_app_test/features/auth/presentation/views/login_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +18,7 @@ abstract class RouterManager {
         builder: (context, state) {
           AuthService().init(); // di
           return RepositoryProvider(
-            create: (context) => GetIt.instance<AuthRepoImpl>(),
+            create: (context) => GetIt.instance<IAuthRepo>(),
             child: BlocProvider(
               create: (context) => GetIt.instance<AuthCubit>(),
               child: const LoginPage(),
