@@ -7,12 +7,14 @@ import 'package:dartz/dartz.dart';
 
 // Repository Implementation
 class AuthRepoImpl implements IAuthRepo {
-  final IConnection apiService;
-  AuthRepoImpl({required this.apiService});
+  // use the interface to create instance instead of using ApiService.
+  final IConnection connection;
+
+  AuthRepoImpl({required this.connection});
   @override
   Future<Either<Failure, String>> logIn(UserModel user) async {
     try {
-      final response = await apiService.post(
+      final response = await connection.post(
         url: 'endPoint',
         body: {"email": user.email, "password": user.password},
       );
@@ -48,7 +50,7 @@ class AuthRepoImpl implements IAuthRepo {
   @override
   Future<Either<Failure, String>> signUp(UserModel user) async {
     try {
-      final response = await apiService.post(
+      final response = await connection.post(
           url: 'endPoint',
           body: {"email": user.email, "password": user.password});
       if (response.statusCode == 201) {

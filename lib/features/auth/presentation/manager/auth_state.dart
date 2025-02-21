@@ -1,25 +1,12 @@
-part of 'auth_cubit.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-sealed class AuthState {}
+part 'auth_state.freezed.dart';
 
-final class AuthInitial extends AuthState {}
-
-final class AuthLoading extends AuthState {}
-final class UserAuthenticated  extends AuthState {
-  final String token;
-
-  UserAuthenticated ( this.token);
-}
-
-final class UserSignupSuccessfully extends AuthState {
-  final String message;
-
-  UserSignupSuccessfully({required this.message});
-}
-final class UserLogout extends AuthState {}
-
-final class AuthError extends AuthState {
-  final String errMessage;
-
-  AuthError({required this.errMessage});
+@freezed
+class AuthState<T> with _$AuthState<T> {
+  const factory AuthState.initial() = Initial;
+  const factory AuthState.loading() = Loading;
+  const factory AuthState.success(T token) = Success;
+  const factory AuthState.error(String errMessage) = Error;
+  const factory AuthState.failure(String errMessage) = Failure;
 }

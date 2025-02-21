@@ -17,23 +17,54 @@ class AuthService {
       () => ApiService(),
     );
     sl.registerLazySingletonSafely<IAuthRepo>(
-      () => AuthRepoImpl(apiService: sl()),
+      () => AuthRepoImpl(connection: sl()),
     );
     sl.registerLazySingletonSafely<LoginUseCase>(
-      () => LoginUseCase(sl()),
-    );
-    sl.registerLazySingletonSafely<LogoutUseCase>(
-      () => LogoutUseCase(sl()),
-    );
-    sl.registerLazySingletonSafely<SignUpUseCase>(
-      () => SignUpUseCase(sl()),
-    );
-    sl.registerLazySingletonSafely<AuthCubit>(
-      () => AuthCubit(
-        sl(),
-        sl(),
+      () => LoginUseCase(
         sl(),
       ),
     );
+    sl.registerLazySingletonSafely<SignUpUseCase>(
+      () => SignUpUseCase(
+        sl(),
+      ),
+    );
+    sl.registerLazySingletonSafely<LogoutUseCase>(
+      () => LogoutUseCase(
+        sl(),
+      ),
+    );
+    sl.registerLazySingletonSafely<AuthCubit>(
+      () => AuthCubit(
+        loginUseCase: sl(),
+        signUpUseCase: sl(),
+        logoutUseCase: sl(),
+      ),
+    );
+
+    // sl.registerLazySingletonSafely<IConnection>(
+    //   () => ApiService(),
+    // );
+    // sl.registerLazySingletonSafely<IAuthRepo>(
+    //   () => AuthRepoImpl(
+    //     connection: sl(),
+    //   ),
+    // );
+    // sl.registerLazySingletonSafely<LoginUseCase>(
+    //   () => LoginUseCase(sl()),
+    // );
+    // sl.registerLazySingletonSafely<LogoutUseCase>(
+    //   () => LogoutUseCase(sl()),
+    // );
+    // sl.registerLazySingletonSafely<SignUpUseCase>(
+    //   () => SignUpUseCase(sl()),
+    // );
+    // sl.registerLazySingletonSafely<AuthCubit>(
+    //   () => AuthCubit(
+    //     sl(),
+    //     sl(),
+    //     sl(),
+    //   ),
+    // );
   }
 }
