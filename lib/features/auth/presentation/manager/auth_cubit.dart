@@ -5,10 +5,6 @@ import 'package:authentication_app_test/features/auth/domain/use_cases/signup_us
 import 'package:authentication_app_test/features/auth/presentation/manager/auth_state.dart';
 import 'package:bloc/bloc.dart';
 
-
-
-
-
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit({
     required this.loginUseCase,
@@ -25,10 +21,10 @@ class AuthCubit extends Cubit<AuthState> {
     final response = await loginUseCase.execute(user);
     response.fold(
       (failure) => emit(
-        AuthState.error( failure.message),
+        AuthState.error(failure.message),
       ),
       (token) => emit(
-        AuthState.authenticated(token),
+        AuthState<String>.success(token),
       ),
     );
   }
@@ -38,10 +34,10 @@ class AuthCubit extends Cubit<AuthState> {
     final response = await signUpUseCase.execute(user);
     response.fold(
       (failure) => emit(
-        AuthState.error( failure.message),
+        AuthState.error(failure.message),
       ),
       (message) => emit(
-        AuthState.signUpSuccessfully( message),
+        AuthState<dynamic>.success(null),
       ),
     );
   }
@@ -51,9 +47,9 @@ class AuthCubit extends Cubit<AuthState> {
     final response = await logoutUseCase.execute();
     response.fold(
       (failure) => emit(
-        AuthState.error( failure.message),
+        AuthState.error(failure.message),
       ),
-      (_) => emit(AuthState.logout()),
+      (_) => emit(AuthState<bool>.success(true)),
     );
   }
 }

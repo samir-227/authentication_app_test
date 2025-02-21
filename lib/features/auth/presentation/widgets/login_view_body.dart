@@ -41,36 +41,35 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               const SizedBox(height: 30),
               BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
+                  if (state is Success<dynamic>) {
+                    Navigator.pushNamed(context, 'login');
+                  }
                   state.whenOrNull(
-                    signUpSuccessfully: (message) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(message)),
-                      );
-                    },
                     error: (errMessage) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text(errMessage)),
                       );
                     },
-                    authenticated: (token) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Logged in successfully!")),
-                      );
-                      Navigator.pushNamed(context, 'home');
+                    success: (token) {
+                      if (token is String) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Logged in successfully!")),
+                        );
+                        Navigator.pushNamed(context, 'home');
+                      }
                     },
                   );
                 },
                 builder: (context, state) {
                   return state.maybeWhen(
-                    loading: () => const Center(child: CircularProgressIndicator()),
+                    loading: () =>
+                        const Center(child: CircularProgressIndicator()),
                     orElse: () => ElevatedButton(
                       onPressed: () {
-                         context.read<AuthCubit>().login(
-                          UserModel(
-                            email: emailController.text,
-                            password: passwordController.text,
-                          )
-                        );
+                        context.read<AuthCubit>().login(UserModel(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            ));
                       },
                       child: const Text("Login"),
                     ),
@@ -163,4 +162,3 @@ class _LoginViewBodyState extends State<LoginViewBody> {
 //     );
 //   }
 // }
-

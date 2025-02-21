@@ -5,4 +5,5 @@ import 'package:flutter/material.dart';
 void main() {
   SecureStorageManager().init();
   runApp(const MyApp());
+  return;
 }
