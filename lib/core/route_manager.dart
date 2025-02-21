@@ -1,5 +1,4 @@
 import 'package:authentication_app_test/features/auth/data/di/auth_service.dart';
-import 'package:authentication_app_test/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:authentication_app_test/features/auth/domain/repos/auth_repo.dart';
 import 'package:authentication_app_test/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:authentication_app_test/features/auth/presentation/views/login_view.dart';
